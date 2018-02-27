@@ -1,3 +1,3 @@
-import Example from "./lib/Example";
+import TextInput from "./lib/TextInput";
 
-export { Example };
+export { TextInput };
