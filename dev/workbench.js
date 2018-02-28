@@ -15,11 +15,11 @@ class Workbench extends React.Component {
 
     render() {
         console.log(this.state.OPTION);
-        const options = [{ key: "1", value: "1" }, { key: "2", value: "2" }, { key: "3", value: "3"}];
+        const options = [{ label: "1A", value: "1" }, { label: "2B", value: "2" }, { label: "3C", value: "3"}];
         return (
             <section className="test-area">
                 <SelectInput 
-                name="Select Input" 
+                defaultLabel="Select Input" 
                 options={options} 
                 selectAction={(e) => this.setState({OPTION: e.target.value})}
                 disabled={false}/>
