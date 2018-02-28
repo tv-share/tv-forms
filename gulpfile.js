@@ -36,9 +36,11 @@ gulp.task('js', (cb) => {
     pump(tasks, cb);
 });
 
+
 gulp.task("default", ["css"], () => {
     gulp.watch("src/style/*", ["css"]);
 });
+
 
 gulp.task('css', (cb) => {
     const tasks = [

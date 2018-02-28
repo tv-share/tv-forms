@@ -3,11 +3,11 @@ import ReactDOM from "react-dom";
 
 import { SelectInput } from "../src/index";
 
+
 class Workbench extends React.Component {
 
     constructor(props) {
         super(props);
-
         this.state = {
             OPTION: ""
         };
@@ -23,6 +23,7 @@ class Workbench extends React.Component {
                 options={options} 
                 selectAction={(e) => this.setState({OPTION: e.target.value})}
                 disabled={false}/>
+
             </section>
         )
     }
