@@ -1,3 +1,3 @@
-import Example from "./lib/Example";
+import SelectInput from "./lib/SelectInput";
 
-export { Example };
+export { SelectInput };
