@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon --watch src/**/*.js --watch src/**/*.styl --watch src --ignore dev/ --exec \"gulp css && parcel ./dev/index.html -d ./dev/build -p 8888\"",
+    "dev": "parcel dev/index.html",
     "build": "gulp build"
   },
   "author": "theVelops <contato@thevelops.com> (http://www.thevelops.com)",
