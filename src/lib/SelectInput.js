@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 /**
-* Renders the Header Component
+* Renders the SelectInput Component
 * @param  {String}    	className is a string that will be attached to the select input's className (optional)
 * @param  {String}    	defaultLabel defines a name for the drop-down list
 * @param  {Boolean}     disabled specifies if the drop-down should be disabled
