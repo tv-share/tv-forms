@@ -1,8 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import "../src/style/_index";
 
-import { Example } from "../src/index";
+import Select from "./src/lib/Select";
 
 class Workbench extends React.Component {
 
@@ -15,11 +14,10 @@ class Workbench extends React.Component {
     render() {
         return (
             <section className="test-area">
-                <Example label="Exemplo" />
+                <Select />
             </section>
         )
     }
 }
 
 ReactDOM.render(<Workbench />, document.querySelector("#app-container"));
-
