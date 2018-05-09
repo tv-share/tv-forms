@@ -1,48 +1,68 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import PropTypes from "prop-types";
 
 import ArrowIcon from '../misc/ArrowIcon';
 
-class Select extends Component {
+class Select extends PureComponent {
 
     constructor(props) {
         super(props);
         
         this.state = {
-            open: false
+            isOpen: false
         };
 
-        this.toggleOpen = this.toggleOpen.bind(this);
+        this.open = this.open.bind(this);
+        this.close = this.close.bind(this);
     }
 
-    toggleOpen() {
-        this.setState({ open: !this.state.open });
+    open() {
+        this.refs.list.focus();
+        this.setState({ isOpen: true });
     }
 
-    getOptions() {
+    close() {
+        this.setState({ isOpen: false });
+    }
+
+    getListInfo() {
         const { placeholder, children } = this.props;
         const options = [];
+        let selectedNode = null;
 
-        if(placeholder) options.push(<li>placeholder</li>);
+        if(placeholder) options.push(<li className="tv-placeholder">{placeholder}</li>);
 
-        children.forEach(({ props: { children }}) => {
-            options.push(<li>children</li>);
-        });
+        if(children) {
+            children.forEach(child => {
+                options.push(<li onClick={this.close}>{child}</li>);
+                if(child.props.id == this.props.selected) selectedNode = child;
+            });
+        }
 
-        return options;
+        const selected = (
+            <div className="tv-selected-wrapper">
+                {
+                    selectedNode || 
+                    <div className="tv-placeholder">{placeholder || "-"}</div>
+                }
+            </div>
+        );
+        
+        return { options, selected };
     }
 
     render() {
 
-        const { placeholder } = this.props;
-        const { open } = this.state;
+        const { options, selected } = this.getListInfo();
+        const { isOpen } = this.state;
 
         return (
-            <div className="tv-select-wrapper" onClick={this.toggleOpen}>
-                <input placeholder={placeholder} type="text" readOnly="true" />
+            <div className="tv-select-wrapper">
+                {selected}
+                <input tabIndex="1" onFocus={this.open} type="text" readOnly="true" />
                 <ArrowIcon />
-                <ul className={open ? "-open" : ""}>
-                    {this.getOptions()}
+                <ul tabIndex="1" ref="list" onBlur={this.close} className={isOpen ? "-open" : ""}>
+                    {options}
                 </ul>
             </div>
         );
@@ -51,6 +71,7 @@ class Select extends Component {
 
 Select.propTypes = {
     placeholder: PropTypes.string,
+    selected: PropTypes.string
 };
 
 export default Select;

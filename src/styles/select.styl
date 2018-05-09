@@ -1,15 +1,37 @@
 .tv-select-wrapper
+    font-family "Roboto", Arial, sans-serif
     position relative
     font-size 13px
     height 4em
 
+    *
+        -webkit-tap-highlight-color transparent
+
+    .tv-selected-wrapper
+        pointer-events none
+        position absolute
+        top 0
+        right 2em
+        bottom 0
+        left 0
+
+    .tv-placeholder
+        line-height 2em
+        font-size 1.3em
+        padding 10px
+
     input
+        border none
+        border-bottom 1px solid #757575
         box-sizing border-box
         padding 10px
-        font-size 1.2em
+        font-size 1.3em
         width 100%
         height 100%
         cursor pointer
+
+        &:focus
+            border-bottom 1px solid blue
 
     svg
         position absolute
@@ -17,25 +39,41 @@
         width 2em
         top 1em
         right 1em
+        pointer-events none
 
-    ul  
+    ul
         position absolute
         cursor pointer
+        max-height 400px
+        overflow auto
         background-color white
         left 0
         right 0
         top 0
-        padding 10px
         margin 0
-        border 1px solid black
+        padding 0
         list-style none
         list-style-type none
-        visibility hidden
-
+        z-index 9999
+        opacity 0
+        transform scaleX(0) scaleY(0)
+        transition all .1s
+        box-shadow 0 2px 2px 0 rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.12), 0 1px 5px 0 rgba(0,0,0,0.2)
+    
+        &:focus
+            outline none
+        
         &.-open
-            visibility visible
+            transform-origin 0px 0px 0px
+            transform scaleX(1) scaleY(1)
+            opacity 1
+        
+        li
+            &:hover
+                background-color rgba(0,0,0,0.08)
 
-        li + li
-            margin-top 10px
-     
+            &.-selected
+                background-color #fafafa
 
+            &.tv-placeholder
+                color #757575
