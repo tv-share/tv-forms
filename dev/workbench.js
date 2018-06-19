@@ -2,20 +2,25 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "../src/style/_index";
 
-import { Example } from "../src/index";
+import { TextInput } from "../src/index";
 
 class Workbench extends React.Component {
 
     constructor(props) {
         super(props);
 
-        this.state = {};
+        this.state = {
+            CPF: "",
+            id: ""
+        };
     }
 
+
     render() {
+        console.log(this.state.CPF);
         return (
             <section className="test-area">
-                <Example label="Exemplo" />
+                <TextInput label="CPF" id="CPF" value={this.state.CPF} changeAction={(e) => this.setState({CPF: e.target.value})}/>
             </section>
         )
     }
